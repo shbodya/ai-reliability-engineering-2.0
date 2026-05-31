@@ -1,0 +1,13 @@
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: ai-gw-llama
+  namespace: kagent
+spec:
+  provider: OpenAI
+  model: llama3.2:1b
+  apiKeySecret: kagent-openai
+  apiKeySecretKey: OPENAI_API_KEY
+  openAI:
+    baseUrl: http://ai-gw.ai.svc:8080/v1
+    temperature: "0.2"
