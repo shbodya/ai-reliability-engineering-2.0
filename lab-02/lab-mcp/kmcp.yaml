@@ -1,0 +1,22 @@
+name: lab-mcp
+framework: fastmcp-python
+version: 0.1.0
+description: lab-02 custom MCP
+author: shbodya
+secrets:
+    local:
+        enabled: false
+        provider: env
+        file: .env.local
+    production:
+        enabled: false
+        provider: kubernetes
+        secretName: lab-mcp-secrets-production
+        namespace: kagent
+    staging:
+        enabled: false
+        provider: kubernetes
+        secretName: lab-mcp-secrets-staging
+        namespace: kagent
+created_at: 2026-05-31T21:00:15.095125+03:00
+updated_at: 2026-05-31T21:00:15.096689+03:00

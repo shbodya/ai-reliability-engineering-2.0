@@ -1,0 +1,35 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: mcp-fetch
+  namespace: kagent
+spec:
+  deployment:
+    image: ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+    cmd: uvx
+    args:
+      - mcp-server-fetch
+    port: 3000
+  stdioTransport: {}
+  transportType: stdio
+---
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: mcp-demo
+  namespace: kagent
+spec:
+  description: "Demo agent using MCP fetch tool through agentgateway + Ollama"
+  type: Declarative
+  declarative:
+    modelConfig: ollama-via-gw
+    systemMessage: |
+      You are a helpful assistant. Use the fetch tool when the user
+      asks you to retrieve a URL. Keep answers short.
+    tools:
+      - type: McpServer
+        mcpServer:
+          name: mcp-fetch
+          kind: MCPServer
+          toolNames:
+            - fetch

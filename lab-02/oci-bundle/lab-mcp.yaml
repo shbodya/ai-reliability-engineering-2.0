@@ -1,0 +1,39 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: lab-mcp
+  namespace: kagent
+spec:
+  deployment:
+    image: ghcr.io/shbodya/ai-reliability-engineering-2.0/lab-mcp:0.1.0
+    imagePullPolicy: IfNotPresent
+    cmd: python
+    args:
+      - src/main.py
+    port: 8080
+  stdioTransport: {}
+  transportType: stdio
+---
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: lab-mcp-agent
+  namespace: kagent
+spec:
+  description: "Agent using custom KMCP-built MCP server with current_time + pod_count tools"
+  type: Declarative
+  declarative:
+    modelConfig: ollama-via-gw
+    systemMessage: |
+      You are a helpful assistant. You have two tools:
+      - current_time: returns current UTC time
+      - pod_count: returns pod count for a given namespace
+      Use them when relevant. Keep answers short.
+    tools:
+      - type: McpServer
+        mcpServer:
+          name: lab-mcp
+          kind: MCPServer
+          toolNames:
+            - current_time
+            - pod_count
