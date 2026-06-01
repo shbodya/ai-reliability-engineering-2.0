@@ -1,0 +1,13 @@
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: ollama-qwen3
+  namespace: kagent
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  provider: Ollama
+  model: qwen3:8b
+  ollama:
+    host: http://ollama.ollama:11434

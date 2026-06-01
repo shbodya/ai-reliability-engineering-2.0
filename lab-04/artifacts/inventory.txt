@@ -1,0 +1,51 @@
+===== AI INVENTORY @ 2026-05-31T20:37:31Z =====
+
+--- Cluster nodes ---
+NAME                 STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+abox-control-plane   Ready    control-plane   9m3s    v1.35.0   172.22.0.3    <none>        Debian GNU/Linux 12 (bookworm)   6.12.76-linuxkit   containerd://2.2.0
+abox-worker          Ready    <none>          8m54s   v1.35.0   172.22.0.4    <none>        Debian GNU/Linux 12 (bookworm)   6.12.76-linuxkit   containerd://2.2.0
+abox-worker2         Ready    <none>          8m54s   v1.35.0   172.22.0.2    <none>        Debian GNU/Linux 12 (bookworm)   6.12.76-linuxkit   containerd://2.2.0
+
+--- kagent Agents ---
+NAMESPACE   NAME                             TYPE          RUNTIME   READY   ACCEPTED
+kagent      argo-rollouts-conversion-agent   Declarative   python    True    True
+kagent      helm-agent                       Declarative   python    True    True
+kagent      k8s-agent                        Declarative   python    True    True
+kagent      kgateway-agent                   Declarative   python    True    True
+kagent      observability-agent              Declarative   python    True    True
+kagent      promql-agent                     Declarative   python    True    True
+
+--- kagent ModelConfigs ---
+NAMESPACE   NAME                   PROVIDER   MODEL
+kagent      default-model-config   OpenAI     gpt-4.1-mini
+
+--- kagent ToolServers / MCPServers ---
+NAMESPACE   NAME                                            PROTOCOL          URL                                         ACCEPTED
+kagent      remotemcpserver.kagent.dev/kagent-grafana-mcp   STREAMABLE_HTTP   http://kagent-grafana-mcp.kagent:8000/mcp   True
+kagent      remotemcpserver.kagent.dev/kagent-tool-server   STREAMABLE_HTTP   http://kagent-tools.kagent:8084/mcp         True
+
+--- Gateways + HTTPRoutes ---
+NAMESPACE             NAME                                                      CLASS          ADDRESS   PROGRAMMED   AGE
+agentgateway-system   gateway.gateway.networking.k8s.io/agentgateway-external   agentgateway             True         7m23s
+
+NAMESPACE   NAME                                         HOSTNAMES   AGE
+kagent      httproute.gateway.networking.k8s.io/kagent               7m23s
+
+--- Flux HelmReleases ---
+NAMESPACE             NAME                AGE     READY   STATUS
+agentgateway-system   agentgateway        7m23s   True    Helm install succeeded for release agentgateway-system/agentgateway.v1 with chart agentgateway@2.2.1+f7497fcb08f7
+agentgateway-system   agentgateway-crds   7m53s   True    Helm install succeeded for release agentgateway-system/agentgateway-crds.v1 with chart agentgateway-crds@2.2.1+a82eae1e4346
+flux-system           gateway-api-crds    7m53s   True    Helm install succeeded for release flux-system/gateway-api-crds.v1 with chart gateway-api-crds@1.4.0+5b9a7aba8268
+kagent                kagent              7m23s   True    Helm install succeeded for release kagent/kagent.v1 with chart kagent@0.7.23+c428da65781e
+kagent                kagent-crds         7m53s   True    Helm install succeeded for release kagent/kagent-crds.v1 with chart kagent-crds@0.9.4+eb448c6275e1
+
+--- OCI Repositories ---
+NAMESPACE     NAME                URL                                                   READY   STATUS                                                                                                        AGE
+flux-system   agentgateway        oci://ghcr.io/kgateway-dev/charts/agentgateway        True    stored artifact for digest 'v2.2.1@sha256:f7497fcb08f73fdad9f60fb54a9623aa8e3a53a485ed78269f8cc80d38eaab94'   7m23s
+flux-system   agentgateway-crds   oci://ghcr.io/kgateway-dev/charts/agentgateway-crds   True    stored artifact for digest 'v2.2.1@sha256:a82eae1e4346aa4165edb380ef72551898e92a4c55182780c332c06d534054c8'   7m53s
+flux-system   gateway-api-crds    oci://ghcr.io/den-vasyliev/gateway-api-crds           True    stored artifact for digest '1.4.0@sha256:5b9a7aba826870511d44a1e9463d6a93676c826ffa25c26d7e0601316a16cc1d'    7m53s
+flux-system   kagent              oci://ghcr.io/kagent-dev/kagent/helm/kagent           True    stored artifact for digest '0.7.23@sha256:c428da65781edb0a16080f9a34548555563bbaa423aed483a00156b83e9cdbc5'   7m23s
+flux-system   kagent-crds         oci://ghcr.io/kagent-dev/kagent/helm/kagent-crds      True    stored artifact for digest '0.9.4@sha256:eb448c6275e1a183587ef5196a573c5c149d76987f728639b92b1c8ab718526b'    7m53s
+flux-system   releases            oci://ghcr.io/den-vasyliev/abox/releases              True    stored artifact for digest '0.5.7@sha256:6c8949dbe574af10039c9e5cdcdd1bfba360f035609ff2c3f48e05d533b890da'    8m2s
+
+===== END =====

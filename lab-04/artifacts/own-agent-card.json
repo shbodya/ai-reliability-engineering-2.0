@@ -1,0 +1,39 @@
+{
+    "name": "own-agent",
+    "description": "Summarizes input text \u2014 returns char/word/line counts plus first sentence.",
+    "supportedInterfaces": [
+        {
+            "url": "http://localhost:9000/a2a/jsonrpc/",
+            "protocolBinding": "JSONRPC"
+        }
+    ],
+    "version": "0.1.0",
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": false
+    },
+    "defaultInputModes": [
+        "text/plain"
+    ],
+    "defaultOutputModes": [
+        "text/plain"
+    ],
+    "skills": [
+        {
+            "id": "summarize",
+            "name": "Summarize text",
+            "description": "Compute basic stats (chars/words/lines) + first sentence of supplied text.",
+            "tags": [
+                "text",
+                "summary",
+                "utility"
+            ],
+            "examples": [
+                "Summarize: The quick brown fox jumps over the lazy dog."
+            ]
+        }
+    ],
+    "preferredTransport": "JSONRPC",
+    "protocolVersion": "0.3",
+    "url": "http://localhost:9000/a2a/jsonrpc/"
+}

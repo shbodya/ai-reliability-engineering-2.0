@@ -1,0 +1,2 @@
+tool count: 123
+sample names: ['argo_check_plugin_logs', 'argo_pause_rollout', 'argo_promote_rollout', 'argo_rollouts_list', 'argo_set_rollout_image', 'argo_verify_argo_rollouts_controller_install', 'argo_verify_gateway_plugin', 'argo_verify_kubectl_plugin_install']

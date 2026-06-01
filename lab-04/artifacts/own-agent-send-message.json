@@ -1,0 +1,38 @@
+{
+    "result": {
+        "task": {
+            "id": "18ddebfd-e259-4c57-9ceb-afbfd706a063",
+            "contextId": "de0dac9a-da46-4544-b44d-5fcb5a16d314",
+            "status": {
+                "state": "TASK_STATE_COMPLETED",
+                "timestamp": "2026-05-31T20:12:07.457170Z"
+            },
+            "artifacts": [
+                {
+                    "artifactId": "8e2ee13a-53c0-488e-8027-86b17aafac63",
+                    "name": "summary",
+                    "parts": [
+                        {
+                            "text": "chars=64 words=14 lines=1\nfirst_sentence: The quick brown fox jumps over the lazy dog."
+                        }
+                    ]
+                }
+            ],
+            "history": [
+                {
+                    "messageId": "m-1",
+                    "contextId": "de0dac9a-da46-4544-b44d-5fcb5a16d314",
+                    "taskId": "18ddebfd-e259-4c57-9ceb-afbfd706a063",
+                    "role": "ROLE_USER",
+                    "parts": [
+                        {
+                            "text": "The quick brown fox jumps over the lazy dog. It was a sunny day."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "id": "1",
+    "jsonrpc": "2.0"
+}

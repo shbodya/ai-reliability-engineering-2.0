@@ -1,0 +1,47 @@
+{
+    "result": {
+        "task": {
+            "id": "0e96c4bb-71df-45a7-820f-766f2d756028",
+            "contextId": "dc9985ec-e0f4-47f2-9048-4ebbc7e9e5c4",
+            "status": {
+                "state": "TASK_STATE_COMPLETED",
+                "timestamp": "2026-05-31T20:41:06.188738Z"
+            },
+            "artifacts": [
+                {
+                    "artifactId": "ccf7a191-db7b-4d2e-b0f6-ad7bcdc14a5d",
+                    "name": "summary",
+                    "parts": [
+                        {
+                            "text": "chars=74 words=15 lines=1\nfirst_sentence: The quick brown fox jumps over the lazy dog."
+                        }
+                    ]
+                },
+                {
+                    "artifactId": "2f37e983-8745-4c78-9b4c-d3dc2f1dc603",
+                    "name": "peer-enrichment",
+                    "parts": [
+                        {
+                            "text": "tokens=15 unique=12 content_words=10 avg_word_len=3.87\ntop_content_words: quick, brown, fox, jumps, over, lazy, dog, fox"
+                        }
+                    ]
+                }
+            ],
+            "history": [
+                {
+                    "messageId": "u1",
+                    "contextId": "dc9985ec-e0f4-47f2-9048-4ebbc7e9e5c4",
+                    "taskId": "0e96c4bb-71df-45a7-820f-766f2d756028",
+                    "role": "ROLE_USER",
+                    "parts": [
+                        {
+                            "text": "The quick brown fox jumps over the lazy dog. The fox was hungry and tired."
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "id": "t1",
+    "jsonrpc": "2.0"
+}

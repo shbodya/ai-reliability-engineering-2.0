@@ -1,0 +1,11 @@
+$ curl http://qdrant.qdrant:6333/
+{"title":"qdrant - vector search engine","version":"1.18.0",...}
+
+$ curl -X PUT .../collections/test -d '{"vectors":{"size":4,"distance":"Cosine"}}'
+{"result":true,"status":"ok"}
+
+$ curl -X PUT .../collections/test/points -d '{"points":[{"id":1,"vector":[0.1,0.2,0.3,0.4],"payload":{"label":"a"}}]}'
+{"result":{"operation_id":1,"status":"acknowledged"},"status":"ok"}
+
+$ curl .../collections
+{"result":{"collections":[{"name":"test"}]},"status":"ok"}
